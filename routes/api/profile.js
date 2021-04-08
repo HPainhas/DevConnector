@@ -94,7 +94,7 @@ router.post(
         profileFields.social = socialFields;
 
         try {
-            // Using upsert option (creates new doc if no match is found):
+            // Using upsert option (creates new doc if no match is found)
             let profile = await Profile.findOneAndUpdate(
                 { user: req.user.id },
                 { $set: profileFields },
