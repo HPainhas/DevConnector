@@ -1,3 +1,4 @@
 {
-    "mongoURI": "mongodb+srv://hpainhas:hpainhas@devconnector.qzfyu.mongodb.net/dev_connector?retryWrites=true&w=majority"
+    "mongoURI": "mongodb+srv://hpainhas:hpainhas@devconnector.qzfyu.mongodb.net/dev_connector?retryWrites=true&w=majority",
+    "jwtSecret": "eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6ImhwYWluaGFzIiwiZXhwIjoxNjE3OTE5MDE1LCJpYXQiOjE2MTc5MTkwMTV9.gyxkUCQq96aZJNSYjwAr0PPmURLavVr9QedU5lm20Rg"
 }
