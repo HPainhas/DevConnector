@@ -155,12 +155,14 @@ router.get('/user/:user_id', async (req, res) => {
 // @access  Private
 router.delete('/', auth, async (req, res) => {
     try {
-        // @todo - remove users posts
-
+        // Remove user posts
         // Remove profile
-        await Profile.findOneAndRemove({ user: req.user.id });
         // Remove user
-        await User.findOneAndRemove({ _id: req.user.id });
+        await Promise.all([
+            Post.deleteMany({ user: req.user.id }),
+            Profile.findOneAndRemove({ user: req.user.id }),
+            User.findOneAndRemove({ _id: req.user.id }),
+        ]);
 
         res.json({ msg: 'User has been deleted' });
     } catch (error) {
@@ -227,5 +229,24 @@ router.put(
         }
     }
 );
+
+// @route   DELETE api/profile/experience/:experience_id
+// @desc    Delete experience from profile
+// @access  Private
+router.delete('/experience/:experience_id', auth, async (req, res) => {
+    try {
+        const foundProfile = await Profile.findOne({ user: req.user.id });
+
+        foundProfile.experience = foundProfile.experience.filter(
+            exp => exp._id.toString() !== req.params.experience_id
+        );
+
+        await foundProfile.save();
+        return res.status(200).json(foundProfile);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send('Server Error');
+    }
+});
 
 module.exports = router;
