@@ -12,10 +12,10 @@ const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const { compareSync } = require('bcryptjs');
 
-// @route   GET api/profile/user
+// @route   GET api/profile/me
 // @desc    Get current user's profile
 // @access  Private
-router.get('/user', auth, async (req, res) => {
+router.get('/me', auth, async (req, res) => {
     try {
         const profile = await Profile.findOne({
             user: req.user.id,
