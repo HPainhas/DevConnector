@@ -9,25 +9,26 @@ import {
     USER_LOADED,
     AUTH_ERROR,
     LOGOUT,
+    CLEAR_PROFILE,
 } from './types';
 
 // Load User
 export const loadUser = () => async dispatch => {
     if (localStorage.token) {
         setAuthToken(localStorage.token);
-    }
 
-    try {
-        const res = await axios.get('/api/auth');
+        try {
+            const res = await axios.get('/api/auth');
 
-        dispatch({
-            type: USER_LOADED,
-            payload: res.data,
-        });
-    } catch (error) {
-        dispatch({
-            type: AUTH_ERROR,
-        });
+            dispatch({
+                type: USER_LOADED,
+                payload: res.data,
+            });
+        } catch (error) {
+            dispatch({
+                type: AUTH_ERROR,
+            });
+        }
     }
 };
 
@@ -97,5 +98,6 @@ export const login = (email, password) => async dispatch => {
 
 // Logout / Clear Profile
 export const logout = () => dispatch => {
+    dispatch({ type: CLEAR_PROFILE });
     dispatch({ type: LOGOUT });
 };
