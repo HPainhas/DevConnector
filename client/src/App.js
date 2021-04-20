@@ -11,6 +11,7 @@ import EditProfile from './components/profile-forms/EditProfile';
 import AddExperience from './components/profile-forms/AddExperience';
 import AddEducation from './components/profile-forms/AddEducation';
 import PrivateRoute from './components/routing/PrivateRoute';
+import { LOGOUT } from './actions/types';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -22,11 +23,17 @@ import './App.css';
 
 const App = () => {
     useEffect(() => {
+        // Check for token in LS
         if (localStorage.token) {
             setAuthToken(localStorage.token);
         }
 
         store.dispatch(loadUser());
+
+        // Log user out from all tabs if they log out in one tab
+        window.addEventListener('storage', () => {
+            if (!localStorage.token) store.dispatch({ type: LOGOUT });
+        });
     }, []);
 
     return (
