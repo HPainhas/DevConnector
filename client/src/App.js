@@ -10,6 +10,8 @@ import CreateProfile from './components/profile-forms/CreateProfile';
 import EditProfile from './components/profile-forms/EditProfile';
 import AddExperience from './components/profile-forms/AddExperience';
 import AddEducation from './components/profile-forms/AddEducation';
+import Profile from './components/profile/Profile';
+import Profiles from './components/profiles/Profiles';
 import PrivateRoute from './components/routing/PrivateRoute';
 import { LOGOUT } from './actions/types';
 
@@ -41,15 +43,25 @@ const App = () => {
             <Router>
                 <Fragment>
                     <Navbar />
-                    <Route exact path='/' component={Landing} />
-                    <section className='container'>
-                        <Alert />
-                        <Switch>
+                    <Switch>
+                        <Route exact path='/' component={Landing} />
+                        <section className='container'>
+                            <Alert />
                             <Route exact path='/login' component={Login} />
                             <Route
                                 exact
                                 path='/register'
                                 component={Register}
+                            />
+                            <Route
+                                exact
+                                path='/profiles'
+                                component={Profiles}
+                            />
+                            <Route
+                                exact
+                                path='/profile/:id'
+                                component={Profile}
                             />
                             <PrivateRoute
                                 exact
@@ -76,8 +88,8 @@ const App = () => {
                                 path='/add-education'
                                 component={AddEducation}
                             />
-                        </Switch>
-                    </section>
+                        </section>
+                    </Switch>
                 </Fragment>
             </Router>
         </Provider>
