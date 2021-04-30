@@ -41,10 +41,10 @@ const App = () => {
             <Router>
                 <Fragment>
                     <Navbar />
-                    <Route exact path='/' component={Landing} />
-                    <section className='container'>
-                        <Alert />
-                        <Switch>
+                    <Switch>
+                        <Route exact path='/' component={Landing} />
+                        <section className='container'>
+                            <Alert />
                             <Route exact path='/login' component={Login} />
                             <Route
                                 exact
@@ -76,8 +76,8 @@ const App = () => {
                                 path='/add-education'
                                 component={AddEducation}
                             />
-                        </Switch>
-                    </section>
+                        </section>
+                    </Switch>
                 </Fragment>
             </Router>
         </Provider>
