@@ -3,6 +3,8 @@ import {
     GET_POSTS,
     ADD_POST,
     DELETE_POST,
+    ADD_COMMENT,
+    REMOVE_COMMENT,
     UPDATE_LIKES,
     POST_ERROR,
 } from '../actions/types';
@@ -56,6 +58,23 @@ function postReducer(state = initialState, action) {
                         ? { ...post, likes: payload.likes }
                         : post
                 ),
+                loading: false,
+            };
+        case ADD_COMMENT:
+            return {
+                ...state,
+                post: { ...state.post, comments: payload },
+                loading: false,
+            };
+        case REMOVE_COMMENT:
+            return {
+                ...state,
+                post: {
+                    ...state.post,
+                    comments: state.post.comments.filter(
+                        comment => comment._id !== payload
+                    ),
+                },
                 loading: false,
             };
         default:
