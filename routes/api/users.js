@@ -1,4 +1,5 @@
 const express = require('express');
+const normalize = require('normalize-url');
 const router = express.Router();
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
@@ -39,11 +40,14 @@ router.post(
                 });
             }
 
-            const avatar = gravatar.url(email, {
-                s: '200',
-                r: 'pg',
-                d: 'mm',
-            });
+            const avatar = normalize(
+                gravatar.url(email, {
+                    s: '200',
+                    r: 'pg',
+                    d: 'mm',
+                }),
+                { forceHttps: true }
+            );
 
             user = new User({
                 name,
