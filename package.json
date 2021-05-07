@@ -19,6 +19,8 @@
         "express": "^4.17.1",
         "express-validator": "^6.10.0",
         "gravatar": "^1.8.1",
+        "hosted-git-info": "^4.0.2",
+        "is-svg": "^4.3.1",
         "jsonwebtoken": "^8.5.1",
         "mongoose": "^5.12.3",
         "normalize-url": "^6.0.0"
