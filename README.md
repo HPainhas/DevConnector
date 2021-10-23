@@ -1,6 +1,6 @@
 # DevSocializa App
 
-You can access the DevSocializa app[here](https://dev-socializa.herokuapp.com/).
+You can access the DevSocializa app [here](https://dev-socializa.herokuapp.com/).
 
 ## Available Scripts
 
