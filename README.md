@@ -1,6 +1,6 @@
 # DevSocializa App
 
-You can access the DevSocializa app [here](https://dev-socializa.herokuapp.com/).
+<img width="1494" alt="devsocializa-app-screenshot" src="https://user-images.githubusercontent.com/34819246/213374508-cb1f7808-4544-4acf-8603-5e10a97f9ffe.png">
 
 ## Available Scripts
 
